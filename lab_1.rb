@@ -11,11 +11,12 @@ puts 'Какой язык у тебя любимый?'
 lang = gets
 f_lang = lang[0, lang.length - 1]
 puts(f_lang)
-if f_lang == 'ruby'
+case f_lang
+when 'ruby'
 	puts 'Скорее всего ты - ПОДЛИЗА'
-elsif f_lang == 'python'
+when 'python'
 	puts 'Классный язык, но дальше тебя ждет ruby'
-elsif f_lang == 'c++'
+when 'c++'
 	puts 'ты крут, но ruby все же тебя ждет..'
 else
 	puts 'а ты пробовал писать на ruby?'
