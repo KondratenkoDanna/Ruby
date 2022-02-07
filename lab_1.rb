@@ -7,17 +7,17 @@
 
 # 'str'.methods - в режиме irb выдаст все методы, принадлежащие строке
 
-puts 'Какой язык у тебя любимый?'
-lang = gets
-f_lang = lang[0, lang.length - 1]
-puts(f_lang)
-case
-when f_lang == 'ruby'
-	puts 'Скорее всего ты - ПОДЛИЗА'
-when f_lang == 'python'
-	puts 'Классный язык, но дальше тебя ждет ruby'
-when f_lang == 'c++'
-	puts 'ты крут, но ruby все же тебя ждет..'
-else
-	puts 'а ты пробовал писать на ruby?'
-end
+# puts 'Какой язык у тебя любимый?'
+# lang = gets
+# f_lang = lang[0, lang.length - 1]
+# puts(f_lang)
+# case
+# when f_lang == 'ruby'
+# 	puts 'Скорее всего ты - ПОДЛИЗА'
+# when f_lang == 'python'
+# 	puts 'Классный язык, но дальше тебя ждет ruby'
+# when f_lang == 'c++'
+# 	puts 'ты крут, но ruby все же тебя ждет..'
+# else
+# 	puts 'а ты пробовал писать на ruby?'
+# end
