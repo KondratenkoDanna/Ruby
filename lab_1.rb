@@ -21,3 +21,6 @@ when lang == 'c++'
 else
   puts 'а ты пробовал писать на ruby?'
 end
+
+res = lang == 'Prolog' ? 'Думаю, ruby будет тебе полезнее...' : 'Обрати внимание на ruby!'
+puts res
