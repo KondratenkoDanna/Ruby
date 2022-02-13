@@ -27,6 +27,28 @@ num = ARGV[0]
 # puts "Произведение цифр = #{pr_digit(num)}"
 
 # Метод 1
+def alg_evk(x, y)
+  case
+  when x == y
+    x
+  when x > y
+    alg_evk(x - y, y)
+  when y > x
+    alg_evk(y - x, x)
+  end
+end
+
+def kol_vs_simple(n)
+  kol = 0
+  2.upto(n) do |el|
+    if alg_evk(n, el) == 1
+      kol = kol + 1
+    end
+  end
+  kol
+end
+
+puts kol_vs_simple(ARGV[0].to_i)
 
 # Метод 2
 def sum_3(num)
@@ -39,7 +61,7 @@ def sum_3(num)
   sum
 end
 
-puts sum_3(ARGV[0].to_i)
+# puts sum_3(ARGV[0].to_i)
 
 # Метод 3
 
