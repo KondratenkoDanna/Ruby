@@ -40,7 +40,7 @@ end
 
 def kol_vs_simple(n)
   kol = 0
-  2.upto(n) do |el|
+  1.upto(n) do |el|
     if alg_evk(n, el) == 1
       kol = kol + 1
     end
@@ -48,7 +48,7 @@ def kol_vs_simple(n)
   kol
 end
 
-puts kol_vs_simple(ARGV[0].to_i)
+# puts kol_vs_simple(ARGV[0].to_i)
 
 # Метод 2
 def sum_3(num)
@@ -63,15 +63,27 @@ end
 
 # puts sum_3(ARGV[0].to_i)
 
-# Метод 3
+# Метод
+def kol_vs_simple_digits(n, del_n)
+  kol = 0
+  for el in n.digits
+    if alg_evk(el, del_n) == 1
+      kol = kol + 1
+    end
+  end
+  kol
+end
 
+def del(x)
+  del_x = 1
+  kol_del = 1
+  2.upto(x) do |el|
+    if ((x % el).zero? && kol_del < kol_vs_simple_digits(x, el))
+      del_x = el
+      kol_del = kol_vs_simple_digits(x, el)
+    end
+  end
+  del_x
+end
 
-
-
-
-
-
-
-
-
-
+puts del(ARGV[0].to_i)
