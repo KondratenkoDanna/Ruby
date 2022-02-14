@@ -1,25 +1,25 @@
 # # puts "Cумма цифр = #{ARGV[0].to_i.digits.sum}"
 
-num = ARGV[0]
+# num = ARGV[0]
 
-# def sum_digit(numb)
-#   numb.to_i.digits.sum
-# end
+def sum_digit(numb)
+  numb.to_i.digits.sum
+end
 
-# def min_digit(numb)
-#   numb.to_i.digits.max
-# end
+def min_digit(numb)
+  numb.to_i.digits.max
+end
 
-# def max_digit(numb)
-#   numb.to_i.digits.min
-# end
+def max_digit(numb)
+  numb.to_i.digits.min
+end
 
-# def pr_digit(numb)
-#   pr = 1
-#   list = numb.to_i.digits
-#   list.each { |value| pr *= value }
-#   pr
-# end
+def pr_digit(numb)
+  pr = 1
+  list = numb.to_i.digits
+  list.each { |value| pr *= value }
+  pr
+end
 
 # puts "Cумма цифр = #{sum_digit(num)}"
 # puts "Мин. цифра = #{min_digit(num)}"
@@ -63,7 +63,7 @@ end
 
 # puts sum_3(ARGV[0].to_i)
 
-# Метод
+# Метод 3
 def kol_vs_simple_digits(n, del_n)
   kol = 0
   for el in n.digits
@@ -86,4 +86,62 @@ def del(x)
   del_x
 end
 
-puts del(ARGV[0].to_i)
+# puts del(ARGV[0].to_i)
+
+# Задание 3
+def min_list(l)
+  min = l[0]
+  for el in l
+    if min > el
+      min = el
+    end
+  end
+  min
+end
+
+def max_list(l)
+  max = l[0]
+  for el in l
+    if max < el
+      max = el
+    end
+  end
+  max
+end
+
+# puts max_list(ARGV[0].to_i.digits)
+
+def mult_list(l)
+  mult = 1
+  for el in l
+    mult *= el
+  end
+  mult
+end
+
+def sum_list(l)
+  sum = 0
+  for x in l
+    sum += x
+  end
+  sum
+end
+
+puts mult_list(ARGV[0].to_i.digits)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
