@@ -127,21 +127,43 @@ def sum_list(l)
   sum
 end
 
-puts mult_list(ARGV[0].to_i.digits)
+# puts mult_list(ARGV[0].to_i.digits)
 
+def create_list
+  puts "Введите размер массива:"
+  n = gets
+  n = n.to_i
+  puts "Введите массив:"
+  ar = Array.new(n, 0)
+  n.times do |i|
+    ar[i] = gets
+    ar[i] = ar[i].to_i
+  end
+  ar
+end
 
+# k = create_list
+# p k
+def proc_list
+  case ARGV[1]
+  when '1'
+    l = create_list
+  when '2'
+    name_file = ARGV[2]
+    puts name_file
+    file_data = File.open(name_file, 'r') {|f| f.read}
+    list_from_file = file_data.split(" ").map(&:to_i)
+  end
+end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+case ARGV[0]
+when '+'
+  l = sum_list(proc_list)
+when '*'
+  l = mult_list(proc_list)
+when 'макс'
+  l = max_list(proc_list)
+when 'мин'
+  l = min_list(proc_list)
+end
+puts l
