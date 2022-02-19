@@ -142,15 +142,12 @@ def create_list
   ar
 end
 
-# k = create_list
-# p k
 def proc_list
   case ARGV[1]
   when '1'
     l = create_list
   when '2'
     name_file = ARGV[2]
-    puts name_file
     file_data = File.open(name_file, 'r') {|f| f.read}
     list_from_file = file_data.split(" ").map(&:to_i)
   end
@@ -166,4 +163,37 @@ when 'макс'
 when 'мин'
   l = min_list(proc_list)
 end
-puts l
+# puts l
+
+
+# Задание 4
+# 8
+def ind_2_min(my_list)
+  min_1 = my_list.min
+  ind_min_1 = my_list.index(min_1)
+  l_min = my_list[0...ind_min_1].min
+  r_min = my_list[(ind_min_1 + 1)..-1].min
+  min_2 = [l_min, r_min].min
+  ind_min_2 = my_list.index(min_2)
+  return ind_min_1, ind_min_2
+end
+
+# 20
+def
+
+# 32
+# 44
+# 56
+
+
+
+
+
+
+
+
+
+
+
+
+
