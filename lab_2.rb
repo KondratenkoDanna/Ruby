@@ -1,3 +1,5 @@
+require 'prime'
+
 # # puts "Cумма цифр = #{ARGV[0].to_i.digits.sum}"
 
 # num = ARGV[0]
@@ -216,10 +218,31 @@ def fl_int(ind = 0, flag = true, list)
   fl_int(ind + 1, flag, list)
 end
 
-s = [1, 4.0, 3.0]
-puts fl_int(s)
 # 56
+def prime_numbers_list(list, pr_list = [], ind = 0)
+  if ind == list.length
+    return pr_list
+  end
+  if list[ind].prime?
+    pr_list << list[ind]
+  end
+  prime_numbers_list(list, pr_list, ind + 1)
+end
 
+def no_prime_numbers_list(list, no_pr_list = [], ind = 0)
+  if ind == list.length
+    return no_pr_list
+  end
+  unless list[ind].prime?
+    no_pr_list << list[ind]
+  end
+  no_prime_numbers_list(list, no_pr_list, ind + 1)
+end
+
+# def simple_no_simple_list_pr(new_list = [], list, Proc.new {true})
+
+s = [1, 4, 3]
+p no_prime_numbers_list(s)
 
 
 
