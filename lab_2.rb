@@ -179,7 +179,22 @@ def ind_2_min(my_list)
 end
 
 # 20
-def
+def list_pass(max, dig, list, l_pass = [])
+  if max == dig
+    return l_pass
+  end
+  unless list.include?(dig)
+    l_pass << dig
+  end
+  list_pass(max, dig + 1, list, l_pass)
+end
+
+def list_pass_digits(list)
+  list_pass(list.max, list.min, list)
+end
+
+
+
 
 # 32
 # 44
