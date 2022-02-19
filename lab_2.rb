@@ -204,9 +204,20 @@ def local_max(ind=0, kol=0, list)
   local_max(ind + 1, kol, list)
 end
 
-s = [1, 4, 3, 5, 6, 7, 5]
-puts local_max(s)
 # 44
+def fl_int(ind = 0, flag = true, list)
+  if ind + 1 == list.length || flag == false
+    return flag.to_s == 'true'? true : false
+  end
+  if list[ind].class == list[ind + 1].class
+    flag = false
+  end
+
+  fl_int(ind + 1, flag, list)
+end
+
+s = [1, 4.0, 3.0]
+puts fl_int(s)
 # 56
 
 
