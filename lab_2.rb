@@ -193,10 +193,19 @@ def list_pass_digits(list)
   list_pass(list.max, list.min, list)
 end
 
-
-
-
 # 32
+def local_max(ind=0, kol=0, list)
+  if ind == list.length
+    return kol
+  end
+  if list[ind - 1] < list[ind] && list[ind + 1] < list[ind]
+    kol = kol + 1
+  end
+  local_max(ind + 1, kol, list)
+end
+
+s = [1, 4, 3, 5, 6, 7, 5]
+puts local_max(s)
 # 44
 # 56
 
