@@ -261,14 +261,24 @@ end
 
 
 s = [1, 4, 3, 9, 13, 12, 14]
-p prime_numbers_list(s)
-p no_prime_numbers_list(s)
-p avg_ar_list(s)
+# p prime_numbers_list(s)
+# p no_prime_numbers_list(s)
+# p avg_ar_list(s)
 # p avg_ar(s, 3)
 
+def digits_processing(ind = 0, pr_list = [], list, func, pr)
+   if ind == list.length
+    return pr_list
+   else
+    digits_processing(ind+1, pr.call(list[ind])?func.call(pr_list, list[ind]):pr_list, list, func, pr)
+   end
+ end
 
+ def digits_sum(list)
+     digits_processing(list, lambda {|x, y| x << y}, Proc.new {|n| n.prime?})
+ end
 
-
+p digits_sum([1, 2, 3, 4])
 
 
 
