@@ -239,10 +239,33 @@ def no_prime_numbers_list(list, no_pr_list = [], ind = 0)
   no_prime_numbers_list(list, no_pr_list, ind + 1)
 end
 
-# def simple_no_simple_list_pr(new_list = [], list, Proc.new {true})
+def avg_ar(list, avg_ar_pr, kol = 0, sum = 0, ind = 0)
+  if ind == list.length
+    puts sum
+    p kol
+    return (sum.to_f / kol).round(3)
+  end
+  unless list[ind].prime? || list[ind] <= avg_ar_pr
+    avg_ar(list, avg_ar_pr, kol + 1, sum + list[ind], ind + 1)
+  else
+    avg_ar(list, avg_ar_pr, kol, sum, ind + 1)
+  end
+end
 
-s = [1, 4, 3]
+def avg_ar_list(list)
+  pr_list = prime_numbers_list(list)
+  avg_ar_pr = pr_list.sum / pr_list.length
+  puts = avg_ar_pr
+  avg_ar(list, avg_ar_pr)
+end
+
+
+s = [1, 4, 3, 9, 13, 12, 14]
+p prime_numbers_list(s)
 p no_prime_numbers_list(s)
+p avg_ar_list(s)
+# p avg_ar(s, 3)
+
 
 
 
