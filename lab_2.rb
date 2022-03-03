@@ -144,12 +144,16 @@ def create_list
   ar
 end
 
+
 def proc_list
-  case ARGV[1]
+  puts "Введите: 1 - ввод списка с клавиатуры
+                 2 - ввод с файла "
+  case gets.chomp
   when '1'
     l = create_list
   when '2'
-    name_file = ARGV[2]
+    puts "Введите имя файла: "
+    name_file = gets.chomp
     file_data = File.open(name_file, 'r') {|f| f.read}
     list_from_file = file_data.split(" ").map(&:to_i)
   end
@@ -173,11 +177,17 @@ end
 def ind_2_min(my_list)
   min_1 = my_list.min
   ind_min_1 = my_list.index(min_1)
-  l_min = my_list[0...ind_min_1].min
-  r_min = my_list[(ind_min_1 + 1)..-1].min
-  min_2 = [l_min, r_min].min
+
+  if my_list[0...ind_min_1].min.nil? || my_list[(ind_min_1 + 1)..-1].min.nil?
+    min_2 = my_list[0...ind_min_1].min.nil? ? my_list[(ind_min_1 + 1)..-1].min : my_list[0...ind_min_1].min
+  else
+    l_min = my_list[0...ind_min_1].min
+    r_min = my_list[(ind_min_1 + 1)..-1].min
+    min_2 = [l_min, r_min].min
+  end
+
   ind_min_2 = my_list.index(min_2)
-  return ind_min_1, ind_min_2
+  return ind_min_1 + 1, ind_min_2 + 1
 end
 
 # 20
@@ -278,7 +288,35 @@ def digits_processing(ind = 0, pr_list = [], list, func, pr)
      digits_processing(list, lambda {|x, y| x << y}, Proc.new {|n| n.prime?})
  end
 
-p digits_sum([1, 2, 3, 4])
+# p digits_sum([1, 2, 3, 4])
+list = proc_list
+func = [
+  ind_2_min(list),
+  list_pass_digits(list),
+  local_max(list),
+  avg_ar_list(list),
+  fl_int(list)
+]
+
+def user_selection()
+  puts "Введите действие: 1 - найти индексы двух наименьших элементов массива
+                          2 - найти все пропущенные числа
+                          3 - найти количество локальных максимумов списка
+                          4 - найти среднее арифметическое непростых элементов, которые больше, чем среднее арифметическое простых
+                          5 - проверить, чередуются ли в списке целые и вещественные числа"
+  func_choice = gets.chomp
+  if func_choice >= 1 || func_choice <=5
+    eval(func_choice[func - 1])
+  else
+    puts "Неllo world"
+  end
+end
+
+
+# Задание 5
+# 2
+# 10
+# 17
 
 
 
