@@ -31,12 +31,9 @@ end
 def kol_symb(str, ind = 0, list = [], kol = 0)
   str.each_byte do
     |byte|
-    p byte
     unless list.include?(byte)
       if (byte > 64 && byte < 91) || (byte < 123 && byte > 96)
         list.append(byte)
-        p byte
-        p list
         kol = kol + 1
       end
     end
@@ -44,9 +41,12 @@ def kol_symb(str, ind = 0, list = [], kol = 0)
   kol
 end
 
-p kol_symb(str)
-
 # 10
+def kol_A(str)
+  str.size - /[^A]+/.match(str)[0].size
+end
+
+p kol_A(str)
 # 17
 
 # Cортировка 2 4 8 10
