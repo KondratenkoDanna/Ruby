@@ -1,7 +1,6 @@
 # Задание 4
 # 2
-str = ARGV[0]
-
+str = ARGV[0].to_s
 def order_symb(str, size, ind = 0, flag = true)
   if size - 1 == ind
     return flag
@@ -28,8 +27,31 @@ def name_file(str)
  name_f(str)[0][1..-2]
 end
 
+# 10
+def kol_symb(str, ind = 0, list = [], kol = 0)
+  str.each_byte do
+    |byte|
+    p byte
+    unless list.include?(byte)
+      if (byte > 64 && byte < 91) || (byte < 123 && byte > 96)
+        list.append(byte)
+        p byte
+        p list
+        kol = kol + 1
+      end
+    end
+  end
+  kol
+end
+
+p kol_symb(str)
 
 # 10
 # 17
 
 # Cортировка 2 4 8 10
+
+
+
+
+
