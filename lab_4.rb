@@ -18,13 +18,17 @@ def order_symbol(str)
 end
 
 # puts order_symbol(str)
-def name_file(str)
-  # reg = /[]&&[^.]/.match(str)
-  regex = /\/[^\/]+\./
-  regex.match(str)
+
+#17
+def name_f(str)
+  /\/[^\/]+\./.match(str)
 end
 
-p name_file(str)[0]
+def name_file(str)
+ name_f(str)[0][1..-2]
+end
+
+
 # 10
 # 17
 
