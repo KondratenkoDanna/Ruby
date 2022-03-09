@@ -1,32 +1,20 @@
 class Departament
-  def name
-    @name
-  end
-
-  def number_phone
-    @number_phone
-  end
-
-  def name=(val)
-    @name = val
-  end
-
-  def number_phone=(val)
-    @number_phone = val
-  end
-
-  # attr_accessor :name, :number_phone
+  attr_accessor :name, :number_phone
 
   def initialize(name, number_phone)
     @name = name
     @number_phone = number_phone
   end
 
-  def print()
+  def print
     puts "Имя: #{self.name}\nНомер телефона: #{self.number_phone}"
   end
 end
 
-s = Departament.new('sdf', 456)
-s.print
+us1 = Departament.new('Ivan', 46553)
+us2 = Departament.new('Nikolai', 01456)
+us3 = Departament.new('Pol', 45921)
+us1.print
+us2.print
+us3.print
 # puts s.name, s.number_phone
