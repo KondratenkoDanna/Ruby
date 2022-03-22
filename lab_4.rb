@@ -78,6 +78,11 @@ str = ARGV[0]
 #   end
 # end
 
+def read_from_file
+  name_file = ARGV[0]
+  file_data = File.open(name_file, 'r') {|f| f.read}
+end
+
 # Sort
 def pr(l, ind = 0, n_l = [])
   if ind == l.length
@@ -88,15 +93,21 @@ def pr(l, ind = 0, n_l = [])
 end
 
 
-def hash_length(str)
-  words = str.split(' ')
+def hash_length(strs)
   h = {}
-  words.each { |word| h.merge!({word => word.length}) }
+  strs.each { |str| h.merge!({str => str.length}) }
   h = h.sort_by { |key, value| value}
   pr(h)
 end
 
-puts hash_length(str)
+def sort_by_avg_ascii(strs)
+    strs.sort_by {|str| str.bytes.sum() / str.length()}
+end
+
+list_from_file = read_from_file.split("\n")
+
+# puts hash_length(list_from_file)
+puts sort_by_avg_ascii(list_from_file)
 
 
 
