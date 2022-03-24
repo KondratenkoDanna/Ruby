@@ -1,0 +1,14 @@
+---
+- !ruby/object:Departament
+  duties:
+  - спать
+  - лежать
+  name: Ivan
+  number_phone: 79008908899
+- !ruby/object:Departament
+  duties:
+  - питаться
+  - кушать
+  - spat
+  name: Alex
+  number_phone: 89000007007878
