@@ -122,7 +122,7 @@ s1 = Departament.new('Vova', '+79008908800', ['питаться', 'кушать'
 s1.add_duties('spat')
 s1.name = 'Alex'
 s1.number_phone = '89000007007878'
-puts Departament.all
+Departament.print
 # puts s1
 # p Departament.read_from_text('input.txt')
 # Departament.print
