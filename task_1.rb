@@ -1,13 +1,13 @@
 class Departament
   attr_accessor :name, :highligth_duty
   @@list_objects = []
+  @@choose_note
 
   attr_reader :number_phone
 
   def number_phone=(val)
     unless Departament.check_phone?(val)
-      puts 'Номер введен неправильно! Попробуйте еще раз: '
-      val = gets.chomp
+      raise 'Номер введен неправильно!'
     end
     @number_phone = val
   end
@@ -23,7 +23,7 @@ class Departament
   end
 
   def pr_duties
-    puts @duties.join(', ')
+    return @duties.join(', ')
   end
 
   def pr_duties_in_str
@@ -59,7 +59,16 @@ class Departament
   end
 
   def Departament.check_phone?(number_phone)
-    /\+?[1-9][0-9]{10}/ === number_phone
+    number_phone =~ /^\+?[1-9][0-9]{10}$/
+  end
+
+  def Departament.to_s()
+    p @@list_objects
+    str_obj = ''
+    for i in @@list_objects
+      str_obj = str_obj + i.to_s + "\n"
+    end
+    return str_obj
   end
 
   def Departament.read_from_text(name_file)
@@ -78,11 +87,10 @@ class Departament
 
   def Departament.print
     for obj in @@list_objects
-      p obj[2].empty?
       if obj[2].empty?
-        puts "Имя: #{obj[0]}\nНомер телефона: #{obj[1]}"
+        return "Имя: #{obj[0]}\nНомер телефона: #{obj[1]}"
       else
-        puts "Имя: #{obj[0]}\nНомер телефона: #{obj[1]}\nОбязанности: #{obj[2].join(', ')}."
+        return "Имя: #{obj[0]}\nНомер телефона: #{obj[1]}\nОбязанности: #{obj[2].join(', ')}."
       end
     end
   end
@@ -114,15 +122,53 @@ class Departament
       YAML.load_file(name_file)
   end
 
+  def Departament.add_note(name, number_phone, duties = [])
+    Departament.new(name, number_phone, duties)
+  end
+
+  def Departament.choose_note(ind)
+    @@choose_note = ind
+  end
+
+  def Departament.get_note
+    return @@list_objects[@@choose_note - 1]
+  end
+
+  def Departament.delete_note
+    @@list_objects.delete_at(@@choose_note - 1)
+  end
+
+  # def Departament.constructor(name_file)
+  #   name_file += '.yaml'
+  #   require 'yaml'
+  #   obiect = YAML.load_file(name_file)
+  #   puts obiect
+  #   initialize(obiect)
+
+  def Departament.sort_name()
+    # puts @@list_objects.sort { |a, b| a.name <=> b.name}
+    puts @@list_objects.sort_by { |a| a.name}
+  end
+
 end
 
 # class.ancestors - вывод предков
-s = Departament.new('Ivan', '+79008908899', ['спать', 'лежать'])
+s = Departament.new('Fydor', '+79008908899', ['спать', 'лежать'])
 s1 = Departament.new('Vova', '+79008908800', ['питаться', 'кушать'])
 s1.add_duties('spat')
 s1.name = 'Alex'
-s1.number_phone = '89000007007878'
-Departament.print
+s1.number_phone = "89002007078"
+# p s1
+Departament.add_note('Ilya', '+79008900000', ['питаться', 'кушать'])
+Departament.choose_note(2)
+puts Departament.sort_name
+
+# Departament.constructor()
+
+# Departament.choose_note(2)
+# puts Departament.get_note
+# Departament.add_note()
+# Departament.print
 # puts s1
 # p Departament.read_from_text('input.txt')
 # Departament.print
