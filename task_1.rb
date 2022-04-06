@@ -146,8 +146,7 @@ class Departament
   #   initialize(obiect)
 
   def Departament.sort_name()
-    # puts @@list_objects.sort { |a, b| a.name <=> b.name}
-    puts @@list_objects.sort_by { |a| a.name}
+    return @@list_objects.sort_by { |a| a.name}
   end
 
 end
