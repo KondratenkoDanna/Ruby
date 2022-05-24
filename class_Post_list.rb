@@ -55,15 +55,7 @@ class Post_list
 
 end
 
-n = Post_list.new([Post.new('Департамент имущества', 'Служба закупок', 30, 'Да')])
-# n1 = Post_list.new([Post.new('Имущества', 'Служба закупок', 30, 'Да')])
-n.add_note(Post.new('Имущества', 'Служба закупок', 30, 'Да'))
-# p n.read_from_YAML("t_yaml")
-# puts n.sort_name
-s = Post_list.read_from_YAML('t_y')
-p s
-# p s.sort_name!
-# puts
+
 
 
 

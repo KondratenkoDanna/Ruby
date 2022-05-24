@@ -170,29 +170,7 @@ class Departament
 
 end
 
-# class.ancestors - вывод предков
-# s = Departament.new('Fydor', '+79008908899', ['спать', 'лежать'])
-# s1 = Departament.new('Vova', '+79008908800', ['питаться', 'кушать'])
-# s1.add_duties('spat')
-# s1.name = 'Alex'
-# s1.number_phone = "89002007078"
-# # p s1
-# s = Departament.new('Ilya', '+79008900000', ['питаться', 'кушать'], [Post.new('Департамент имущества', 'Служба закупок', 30, 'Да')])
-# Departament.choose_note(2)
-# puts Departament.sort_name
 
-# Departament.constructor()
-
-# Departament.choose_note(2)
-# puts Departament.get_note
-# Departament.add_note()
-# Departament.print
-# puts s1
-# p Departament.read_from_text('input.txt')
-# Departament.print
-puts Departament.read_from_YAML('t_y')
-
-# puts s.all_vacancy
 
 
 
