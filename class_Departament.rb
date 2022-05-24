@@ -1,3 +1,8 @@
+current_path = File.dirname(__FILE__)
+require "#{current_path}/class_Post_list.rb"
+require "#{current_path}/class_Post.rb"
+
+
 class Departament
   attr_accessor :name, :highligth_duty
   @@list_objects = []
@@ -12,8 +17,8 @@ class Departament
     @number_phone = val
   end
 
-  def initialize(name, number_phone, duties = [])
-    @name, @duties = name, duties
+  def initialize(name, number_phone, post_list=Post_list.new, duties = [])
+    @name, @duties, @post_list = name, duties, post_list
     self.number_phone = (number_phone)
     @@list_objects << self
   end
@@ -63,7 +68,6 @@ class Departament
   end
 
   def Departament.to_s()
-    p @@list_objects
     str_obj = ''
     for i in @@list_objects
       str_obj = str_obj + i.to_s + "\n"
@@ -138,29 +142,44 @@ class Departament
     @@list_objects.delete_at(@@choose_note - 1)
   end
 
-  # def Departament.constructor(name_file)
-  #   name_file += '.yaml'
-  #   require 'yaml'
-  #   obiect = YAML.load_file(name_file)
-  #   puts obiect
-  #   initialize(obiect)
-
   def Departament.sort_name()
     return @@list_objects.sort_by { |a| a.name}
+  end
+
+  def add_post(val)
+    @post_list.add_note(val)
+  end
+
+  def choose_note(ind)
+    @post_list.choose_note(ind)
+  end
+
+  def delete_post
+    @post_list.delete_note
+  end
+
+  def update_post(val)
+    @post_list.update_note(val)
+  end
+
+  def all_vacancy
+    s = ''
+    @post_list.each { |post| s+= post.to_s + "\n" if post.vacancy == 'Да' }
+    s
   end
 
 end
 
 # class.ancestors - вывод предков
-s = Departament.new('Fydor', '+79008908899', ['спать', 'лежать'])
-s1 = Departament.new('Vova', '+79008908800', ['питаться', 'кушать'])
-s1.add_duties('spat')
-s1.name = 'Alex'
-s1.number_phone = "89002007078"
-# p s1
-Departament.add_note('Ilya', '+79008900000', ['питаться', 'кушать'])
-Departament.choose_note(2)
-puts Departament.sort_name
+# s = Departament.new('Fydor', '+79008908899', ['спать', 'лежать'])
+# s1 = Departament.new('Vova', '+79008908800', ['питаться', 'кушать'])
+# s1.add_duties('spat')
+# s1.name = 'Alex'
+# s1.number_phone = "89002007078"
+# # p s1
+# s = Departament.new('Ilya', '+79008900000', ['питаться', 'кушать'], [Post.new('Департамент имущества', 'Служба закупок', 30, 'Да')])
+# Departament.choose_note(2)
+# puts Departament.sort_name
 
 # Departament.constructor()
 
@@ -171,7 +190,9 @@ puts Departament.sort_name
 # puts s1
 # p Departament.read_from_text('input.txt')
 # Departament.print
-# puts Departament.read_from_YAML('t_y')
+puts Departament.read_from_YAML('t_y')
+
+# puts s.all_vacancy
 
 
 

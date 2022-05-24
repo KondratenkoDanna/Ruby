@@ -1,0 +1,11 @@
+---
+- !ruby/object:Post
+  departament: Департамент торговли
+  title: Служба продаж
+  salary: 20
+  vacancy: Да
+- !ruby/object:Post
+  departament: аДепартамент имущества
+  title: аСлужба продаж
+  salary: 20
+  vacancy: Да
