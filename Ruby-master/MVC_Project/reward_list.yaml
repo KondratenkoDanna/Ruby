@@ -1,0 +1,8 @@
+--- !ruby/object:Reward_list
+reward_list:
+- !ruby/object:Reward
+  name: Банка варенья
+  col: 2
+- !ruby/object:Reward
+  name: Шоколадка
+  col: 1

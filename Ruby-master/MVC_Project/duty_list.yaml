@@ -1,0 +1,11 @@
+--- !ruby/object:Duty_list
+duty_list:
+- !ruby/object:Duty
+  name: Офис продаж
+  number: 7
+  number_ch: 12
+- !ruby/object:Duty
+  name: Бухгалтерия
+  number: 30
+  number_ch: 62
+choose_duty: 0

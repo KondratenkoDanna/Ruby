@@ -1,0 +1,16 @@
+---
+- !ruby/object:Post
+  departament: Департамент имущества
+  title: Служба закупок
+  salary: 50
+  vacancy: Да
+- !ruby/object:Post
+  departament: аДепартамент имущества
+  title: аСлужба закупок
+  salary: 30
+  vacancy: Да
+- !ruby/object:Post
+  departament: AИмущества
+  title: AСлужба закупок
+  salary: 30
+  vacancy: Да

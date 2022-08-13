@@ -55,6 +55,22 @@ class Departament
     return @duties[@highligth_duty] = text
   end
 
+  def add_post(post)
+    @post_list.add_note(post)
+  end
+
+  def choose_post(ind)
+    @post_list.choose_note(ind)
+  end
+
+  def delete_post
+    @post_list.delete_note
+  end
+
+  def change_post(value)
+    @post_list.update_note(val)
+  end
+
   def to_s
     unless @duties.empty?
       duty = @duties.join(', ')
@@ -91,10 +107,10 @@ class Departament
 
   def Departament.print
     for obj in @@list_objects
-      if obj[2].empty?
-        return "Имя: #{obj[0]}\nНомер телефона: #{obj[1]}"
+      if obj.name.empty?
+        return "Имя: #{obj.name}\nНомер телефона: #{obj.number_phone}"
       else
-        return "Имя: #{obj[0]}\nНомер телефона: #{obj[1]}\nОбязанности: #{obj[2].join(', ')}."
+        return "Имя: #{obj.name}\nНомер телефона: #{obj.number_phone}\nОбязанности:  #{obj.post_list}"
       end
     end
   end
@@ -162,16 +178,49 @@ class Departament
     @post_list.update_note(val)
   end
 
-  def all_vacancy
-    s = ''
-    @post_list.each { |post| s+= post.to_s + "\n" if post.vacancy == 'Да' }
-    s
+  def all_vacant_vacancy
+    @post_list.get_all_vacant
+  end
+
+  def all_vacant
+    @post_list
   end
 
 end
 
+# class.ancestors - вывод предков
+s1 = Departament.new('Ilia', '+79008908899', Post_list.new([Post.new('Департамент имущества', 'Служба закупок', 50, 'Нет'), Post.new('аДепартамент имущества', 'аСлужба закупок', 30, 'Да')]), ['спать', 'лежать'])
 
+# s = Departament.new('Fydor', '+79008908899',['s', 'w','8',], ['спать', 'лежать'])
 
+# s1 = Departament.new('Vova', '+79008908800', ['питаться', 'кушать'])
+# s1.add_duties('spat')
+# s1.name = 'Alex'
+# s1.number_phone = "89002007078"
+# # p s1
+# s = Departament.new('Ilya', '+79008900000', ['питаться', 'кушать'], [Post.new('Департамент имущества', 'Служба закупок', 30, 'Да')])
+# Departament.choose_note(2)
+# puts Departament.sort_name
+
+# Departament.constructor()
+
+# Departament.choose_note(2)
+# puts Departament.get_note
+# Departament.add_note()
+# Departament.print
+# puts s1
+# p Departament.read_from_text('input.txt')
+# Departament.print
+# puts Departament.sort_name
+# puts Departament.read_from_YAML('t_yaml')
+# puts s1.all_vacant_vacancy
+
+# puts 'puk'
+# puts s1.all
+
+# puts s.all_vacancy
+# Departament.write_to_YAML('input')
+puts Departament.print
 
 
 
